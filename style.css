@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,41 +6,595 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    padding: 20px;
+    color: #333;
+    background-color: #f5f5f5;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
 header {
-    background: #1115f1;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     color: white;
-    padding: 1rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 nav a {
     color: white;
-    margin-right: 1rem;
     text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.btn {
-    background: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content */
+main {
+    background: white;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.hero h2 {
+    color: #1e3a8a;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+/* Content Sections */
+.content {
+    margin: 2rem 0;
+}
+
+.content h3 {
+    color: #1e3a8a;
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3b82f6;
+}
+
+.content h4 {
+    color: #3b82f6;
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.content ul {
+    margin: 1rem 0 1.5rem 2rem;
+}
+
+.content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Access Level Cards */
+.access-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.access-card {
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.access-card.public {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border: 2px solid #3b82f6;
+}
+
+.access-card.members {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #f59e0b;
+}
+
+.access-card.confidential {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border: 2px solid #dc2626;
+}
+
+.access-card h5 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a;
+}
+
+.access-card p {
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+}
+
+/* Document Sections */
+.document-section {
+    margin: 3rem 0;
+}
+
+.document-section h3 {
+    color: #1e3a8a;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3b82f6;
+}
+
+.document-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.document-item {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.document-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.document-item h4 {
+    color: #1e3a8a;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.document-item p {
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+}
+
+.date {
     display: inline-block;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+}
+
+.confidential-note {
+    display: inline-block;
+    background: #fbbf24;
+    color: #78350f;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
-    background: #0056b3;
+    background: #2563eb;
+    transform: translateY(-2px);
 }
 
-.login-container {
-    max-width: 400px;
-    margin: 100px auto;
+.btn-secure {
+    background: #dc2626;
+}
+
+.btn-secure:hover {
+    background: #b91c1c;
+}
+
+.btn-small {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-small:hover {
+    background: #2563eb;
+}
+
+/* Call to Action Section */
+.cta {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 2rem;
+    border-radius: 10px;
     text-align: center;
+    margin: 3rem 0;
+}
+
+.cta h3 {
+    color: #1e3a8a;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+/* Access Info Section */
+.access-info {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: #f9fafb;
+    border-radius: 10px;
+}
+
+.access-info h3 {
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.access-option {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    text-align: center;
+}
+
+.access-option h4 {
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.access-option p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.access-note {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* Notice Boxes */
+.notice-box {
+    background: #dbeafe;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 5px;
+}
+
+.notice-box a {
+    color: #1e3a8a;
+    font-weight: bold;
+}
+
+.confidential-notice {
+    background: #fef2f2;
+    border: 2px solid #dc2626;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.confidential-notice h3 {
+    color: #dc2626;
+    margin-bottom: 1rem;
+}
+
+.confidential-notice p {
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+}
+
+/* Password Protection Styles */
+.password-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.password-box {
+    max-width: 500px;
+    width: 100%;
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.password-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.password-box p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.info-text {
+    background: #fef3c7;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #78350f;
+    border-left: 4px solid #fbbf24;
+}
+
+.password-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 1.5rem 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.password-box input:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.error-message {
+    color: #dc2626;
+    background: #fee2e2;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.help-links {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.help-links a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.help-links a:hover {
+    text-decoration: underline;
+}
+
+.help-links span {
+    margin: 0 0.5rem;
+}
+
+/* Logout Area */
+.logout-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.access-badge {
+    background: #fbbf24;
+    color: #78350f;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Login Container */
+.login-container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.security-badge {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.login-container h2 {
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.login-container p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.auth-notice {
+    background: #fef2f2;
+    border: 2px solid #dc2626;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.auth-notice strong {
+    color: #dc2626;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.auth-notice ul {
+    margin: 1rem 0 1rem 1.5rem;
+    color: #4b5563;
+}
+
+.auth-notice li {
+    margin-bottom: 0.5rem;
+}
+
+.alternative-access {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 5px;
+}
+
+.alternative-access p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.alternative-access a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.alternative-access a:hover {
+    text-decoration: underline;
+}
+
+.help-text {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-top: 2rem;
+}
+
+/* Footer */
+footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+.access-level {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    main {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .access-levels {
+        grid-template-columns: 1fr;
+    }
+
+    .access-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .password-box {
+        padding: 2rem;
+    }
+
+    .login-container {
+        margin: 20px auto;
+        padding: 2rem;
+    }
+}
+
+/* Accessibility */
+a:focus,
+button:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
 }

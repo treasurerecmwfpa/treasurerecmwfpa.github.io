@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential Login - ECMWF Pensioners Association</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ECMWF Pensioners Association</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="public-documents.html">Public Documents</a>
+                <a href="members-area.html">Members Area</a>
+                <a href="confidential-login.html">Confidential</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="login-container">
+            <div class="security-badge">🔒</div>
+            <h2>Confidential Area Login</h2>
+            <p>Access highly sensitive documents and committee materials.</p>
+            
+            <div class="auth-notice">
+                <strong>⚠️ Secure Authentication Required</strong>
+                <p>This area contains confidential financial reports, strategic plans, and committee-only documents.</p>
+                <p>Access is restricted to:</p>
+                <ul>
+                    <li>Committee members</li>
+                    <li>Authorized financial officers</li>
+                    <li>Approved individuals with registered email addresses</li>
+                </ul>
+            </div>
+
+            <button id="loginBtn" class="btn btn-secure">🔐 Login with Secure Authentication</button>
+            
+            <div class="alternative-access">
+                <p>Looking for general member documents?</p>
+                <a href="members-area.html">Access Members Area →</a>
+            </div>
+
+            <p class="help-text">Need access? Contact the association secretary with your request.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ECMWF Pensioners Association. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let auth0Client;
+
+        (async () => {
+            auth0Client = await auth0.createAuth0Client({
+                domain: 'ecmwfpensionersassociation.uk.auth0.com',
+                clientId: 'iEEIkk7T61vDoGwf5pMyrlgM0RtgkAKq',
+                authorizationParams: {
+                    redirect_uri: window.location.origin + '/confidential-callback.html'
+                }
+            });
+
+            // Check if already authenticated
+            const isAuthenticated = await auth0Client.isAuthenticated();
+            if (isAuthenticated) {
+                window.location.href = '/confidential-documents.html';
+            }
+        })();
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            await auth0Client.loginWithRedirect();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Area - ECMWF Pensioners Association</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password Prompt -->
+    <div id="password-prompt" class="password-container">
+        <div class="password-box">
+            <h2>👥 Members Area</h2>
+            <p>Please enter the members password to access this area</p>
+            <p class="info-text">This password is shared with all association members. If you don't have it, please contact the association secretary.</p>
+            <input type="password" id="password-input" placeholder="Enter members password" autofocus>
+            <button onclick="checkPassword()" class="btn">Access Members Area</button>
+            <p id="error-message" class="error-message" style="display: none;">❌ Incorrect password. Please try again.</p>
+            <div class="help-links">
+                <a href="index.html">← Back to Home</a>
+                <span>|</span>
+                <a href="public-documents.html">View Public Documents</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Protected Content -->
+    <div id="protected-content" style="display: none;">
+        <header>
+            <div class="container">
+                <h1>ECMWF Pensioners Association</h1>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="public-documents.html">Public Documents</a>
+                    <a href="members-area.html">Members Area</a>
+                    <a href="confidential-login.html">Confidential</a>
+                </nav>
+                <div class="logout-area">
+                    <span class="access-badge">👥 Members Access</span>
+                    <button onclick="logout()" class="btn-small">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <h2>👥 Members Area</h2>
+            <p class="lead">Welcome to the general members area. Access meeting minutes, directories, and association materials.</p>
+
+            <div class="notice-box">
+                <strong>ℹ️ Note:</strong> This area contains general association materials. For highly sensitive documents (financial reports, strategic plans), please access the <a href="confidential-login.html">Confidential Documents</a> section with your individual credentials.
+            </div>
+
+            <section class="document-section">
+                <h3>Meeting Minutes</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>📝 General Meeting - January 2025</h4>
+                        <p>Minutes from the general members meeting including event planning and member updates.</p>
+                        <span class="date">Date: January 15, 2025</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>📝 General Meeting - October 2024</h4>
+                        <p>Discussion of upcoming reunion and membership activities.</p>
+                        <span class="date">Date: October 20, 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>📝 General Meeting - July 2024</h4>
+                        <p>Summer event recap and autumn planning session.</p>
+                        <span class="date">Date: July 18, 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Member Resources</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>📇 Member Directory 2025</h4>
+                        <p>Complete list of association members with contact information.</p>
+                        <span class="confidential-note">Members Only</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>📋 ECMWF Pension Information Guide</h4>
+                        <p>Comprehensive guide about ECMWF pension schemes and updates.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🏥 Health Insurance Options</h4>
+                        <p>Information about health insurance options available for retirees.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🌍 Member Location Map</h4>
+                        <p>Interactive map showing where our members live around the world.</p>
+                        <a href="#" class="btn-small">View Map</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Internal Newsletters</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>📧 Members Newsletter - January 2025</h4>
+                        <p>Extended member news, personal updates, and detailed ECMWF information.</p>
+                        <span class="date">Published: January 2025</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>📧 Members Newsletter - October 2024</h4>
+                        <p>Member spotlights, obituaries, and comprehensive event coverage.</p>
+                        <span class="date">Published: October 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>📧 Members Newsletter - July 2024</h4>
+                        <p>Summer activities, personal stories, and extended Centre updates.</p>
+                        <span class="date">Published: July 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Event Materials</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>🎉 Annual Reunion 2025 - Full Details</h4>
+                        <p>Complete program, venue information, and registration details.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>📸 Photo Archive 2024</h4>
+                        <p>Complete photo collection from all 2024 events (members only).</p>
+                        <a href="#" class="btn-small">View Gallery</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="confidential-notice">
+                <h3>🔒 Need Access to Confidential Documents?</h3>
+                <p>Financial reports, committee-only minutes, and strategic planning documents are available in the secure Confidential section.</p>
+                <p><strong>Access requires:</strong> Individual authentication with your personal email address (committee members and approved individuals only).</p>
+                <a href="confidential-login.html" class="btn">Login to Confidential Area</a>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 ECMWF Pensioners Association. All rights reserved.</p>
+                <p class="access-level">Current Access Level: Members Area (Password Protected)</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ============================================
+        // CHANGE YOUR PASSWORD HERE
+        // ============================================
+        const MEMBERS_PASSWORD = 'ecmwf2025'; // Change this to your desired password
+        // ============================================
+
+        function checkPassword() {
+            const password = document.getElementById('password-input').value;
+            
+            if (password === MEMBERS_PASSWORD) {
+                // Correct password
+                document.getElementById('password-prompt').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+                // Store authentication in session
+                sessionStorage.setItem('membersAuth', 'true');
+                document.getElementById('error-message').style.display = 'none';
+            } else {
+                // Wrong password
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('password-input').value = '';
+                document.getElementById('password-input').focus();
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('membersAuth');
+            document.getElementById('password-prompt').style.display = 'flex';
+            document.getElementById('protected-content').style.display = 'none';
+            document.getElementById('password-input').value = '';
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        // Check if already authenticated when page loads
+        window.onload = function() {
+            if (sessionStorage.getItem('membersAuth') === 'true') {
+                document.getElementById('password-prompt').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+            }
+        }
+
+        // Allow pressing Enter to submit password
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
