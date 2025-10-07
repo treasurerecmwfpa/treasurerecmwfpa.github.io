@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Area</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="protected-content" style="display: none;">
+        <header>
+            <h1>Members Area</h1>
+            <div>
+                <span id="user-email"></span>
+                <button id="logoutBtn" class="btn">Logout</button>
+            </div>
+        </header>
+        
+        <main>
+            <h2>Protected Content</h2>
+            <p>This is only visible to authenticated members!</p>
+        </main>
+    </div>
+
+    <div id="loading">Checking authentication...</div>
+
+    <script>
+        (async () => {
+            const auth0Client = await auth0.createAuth0Client({
+                domain: 'ecmwfpensionersassociation.uk.auth0.com',
+                clientId: 'iEEIkk7T61vDoGwf5pMyrlgM0RtgkAKq',
+                authorizationParams: {
+                    redirect_uri: window.location.origin + '/callback.html'
+                }
+            });
+
+            const isAuthenticated = await auth0Client.isAuthenticated();
+
+            if (isAuthenticated) {
+                // Show protected content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+                
+                // Get user info
+                const user = await auth0Client.getUser();
+                document.getElementById('user-email').textContent = user.email;
+
+                // Logout button
+                document.getElementById('logoutBtn').addEventListener('click', () => {
+                    auth0Client.logout({
+                        logoutParams: {
+                            returnTo: window.location.origin
+                        }
+                    });
+                });
+            } else {
+                // Redirect to login
+                window.location.href = '/login.html';
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login - ECMWF Pensioners Association</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ECMWF Pensioners Association</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="public-documents.html">Public Documents</a>
+                <a href="login.html">Members Area</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="login-container">
+            <h2>Members Area Login</h2>
+            <p>Access private documents and member-only resources.</p>
+            <p class="notice">Only registered ECMWF pensioners with approved email addresses can access this area.</p>
+            <button id="loginBtn" class="btn">Login with Auth0</button>
+            <p class="help-text">Having trouble logging in? Contact: info@ecmwf-pensioners.org</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ECMWF Pensioners Association. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let auth0Client;
+
+        (async () => {
+            // Replace with YOUR Auth0 credentials
+            auth0Client = await auth0.createAuth0Client({
+                domain: 'ecmwfpensionersassociation.uk.auth0.com',  // Replace with your Auth0 domain
+                clientId: 'iEEIkk7T61vDoGwf5pMyrlgM0RtgkAKq',           // Replace with your Auth0 client ID
+                authorizationParams: {
+                    redirect_uri: window.location.origin + '/callback.html'
+                }
+            });
+
+            // Check if already authenticated
+            const isAuthenticated = await auth0Client.isAuthenticated();
+            if (isAuthenticated) {
+                window.location.href = '/private-documents.html';
+            }
+        })();
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            await auth0Client.loginWithRedirect();
+        });
+    </script>
+</body>
+</html>

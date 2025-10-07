@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticating...</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading-container">
+        <h2>Authenticating...</h2>
+        <p>Please wait while we verify your credentials.</p>
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        (async () => {
+            try {
+                const auth0Client = await auth0.createAuth0Client({
+                    domain: 'ecmwfpensionersassociation.uk.auth0.com',  // Replace with your Auth0 domain
+                    clientId: 'iEEIkk7T61vDoGwf5pMyrlgM0RtgkAKq',           // Replace with your Auth0 client ID
+                    authorizationParams: {
+                        redirect_uri: window.location.origin + '/callback.html'
+                    }
+                });
+
+                // Handle the redirect from Auth0
+                await auth0Client.handleRedirectCallback();
+                
+                // Get user information
+                const user = await auth0Client.getUser();
+                
+                // Check if user email is in approved list
+                // This is a basic client-side check - for production, 
+                // you should also implement this on Auth0 side using Rules or Actions
+                const approvedEmails = [
+                    // Add approved email addresses here
+                    'john.smith@example.com',
+                    'jane.doe@example.com',
+                    'member@ecmwf.int',
+                    // Add more approved emails...
+                ];
+                
+                const userEmail = user.email.toLowerCase();
+                const isApproved = approvedEmails.some(email => 
+                    userEmail === email.toLowerCase()
+                );
+                
+                if (isApproved) {
+                    // Redirect to private documents page
+                    window.location.href = '/private-documents.html';
+                } else {
+                    // Unauthorized - redirect back to login with error
+                    alert('Access Denied: Your email address is not registered as an approved member. Please contact the association for assistance.');
+                    await auth0Client.logout({
+                        logoutParams: {
+                            returnTo: window.location.origin + '/login.html'
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Authentication error:', error);
+                alert('An error occurred during authentication. Please try again.');
+                window.location.href = '/login.html';
+            }
+        })();
+    </script>
+
+    <style>
+        .loading-container {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .spinner {
+            margin: 30px auto;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

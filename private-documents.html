@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Documents - ECMWF Pensioners Association</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading" class="loading-container">
+        <p>Verifying authentication...</p>
+        <div class="spinner"></div>
+    </div>
+
+    <div id="protected-content" style="display: none;">
+        <header>
+            <div class="container">
+                <h1>ECMWF Pensioners Association</h1>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="public-documents.html">Public Documents</a>
+                    <a href="private-documents.html">Members Area</a>
+                </nav>
+                <div class="user-info">
+                    <span id="user-email"></span>
+                    <button id="logoutBtn" class="btn-small">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <h2>Members Area - Private Documents</h2>
+            <p class="lead">Welcome! Access exclusive documents and resources for association members.</p>
+
+            <section class="document-section">
+                <h3>Meeting Minutes</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>🔒 Committee Meeting - January 2025</h4>
+                        <p>Minutes from the latest committee meeting including budget review and event planning.</p>
+                        <span class="date">Date: January 15, 2025</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Annual General Meeting - December 2024</h4>
+                        <p>Full minutes from the AGM including financial report and elections.</p>
+                        <span class="date">Date: December 10, 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Committee Meeting - November 2024</h4>
+                        <p>Discussion of membership growth and 2025 planning.</p>
+                        <span class="date">Date: November 20, 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Financial Reports</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>🔒 Annual Financial Statement 2024</h4>
+                        <p>Complete financial overview including income, expenses, and reserves.</p>
+                        <span class="date">Year: 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Budget Proposal 2025</h4>
+                        <p>Proposed budget for the upcoming year with allocation details.</p>
+                        <span class="date">Year: 2025</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Quarterly Report Q3 2024</h4>
+                        <p>Financial summary for July-September 2024.</p>
+                        <span class="date">Quarter: Q3 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Member Resources</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>🔒 Member Directory 2025</h4>
+                        <p>Complete list of association members with contact information (confidential).</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 ECMWF Pension Information</h4>
+                        <p>Important information about ECMWF pension schemes and updates.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Health Insurance Options</h4>
+                        <p>Information about health insurance options for retirees.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Internal Newsletters</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>🔒 Members Newsletter - January 2025</h4>
+                        <p>Detailed member news, personal updates, and in-depth ECMWF information.</p>
+                        <span class="date">Published: January 2025</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Members Newsletter - October 2024</h4>
+                        <p>Member spotlights, obituaries, and extended event coverage.</p>
+                        <span class="date">Published: October 2024</span>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="document-section">
+                <h3>Strategic Documents</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <h4>🔒 5-Year Strategic Plan 2025-2030</h4>
+                        <p>Long-term vision and goals for the association.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                    <div class="document-item">
+                        <h4>🔒 Membership Growth Analysis</h4>
+                        <p>Statistics and strategies for increasing membership.</p>
+                        <a href="#" class="btn-small">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 ECMWF Pensioners Association. All rights reserved.</p>
+                <p class="confidential">⚠️ All documents in this area are confidential and for members only.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let auth0Client;
+
+        (async () => {
+            try {
+                auth0Client = await auth0.createAuth0Client({
+                    domain: 'ecmwfpensionersassociation.uk.auth0.com',  // Replace with your Auth0 domain
+                    clientId: 'iEEIkk7T61vDoGwf5pMyrlgM0RtgkAKq',           // Replace with your Auth0 client ID
+                    authorizationParams: {
+                        redirect_uri: window.location.origin + '/callback.html'
+                    }
+                });
+
+                const isAuthenticated = await auth0Client.isAuthenticated();
+
+                if (isAuthenticated) {
+                    // Get user info
+                    const user = await auth0Client.getUser();
+                    
+                    // Verify user is in approved list
+                    const approvedEmails = [
+                        'john.smith@example.com',
+                        'jane.doe@example.com',
+                        'member@ecmwf.int',
+                        // Add more approved emails...
+                    ];
+                    
+                    const userEmail = user.email.toLowerCase();
+                    const isApproved = approvedEmails.some(email => 
+                        userEmail === email.toLowerCase()
+                    );
+                    
+                    if (isApproved) {
+                        // Show protected content
+                        document.getElementById('loading').style.display = 'none';
+                        document.getElementById('protected-content').style.display = 'block';
+                        
+                        // Display user email
+                        document.getElementById('user-email').textContent = user.email;
+
+                        // Logout button functionality
+                        document.getElementById('logoutBtn').addEventListener('click', () => {
+                            auth0Client.logout({
+                                logoutParams: {
+                                    returnTo: window.location.origin
+                                }
+                            });
+                        });
+                    } else {
+                        // Not approved
+                        alert('Access Denied: Your email is not authorized.');
+                        await auth0Client.logout({
+                            logoutParams: {
+                                returnTo: window.location.origin + '/login.html'
+                            }
+                        });
+                    }
+                } else {
+                    // Not authenticated - redirect to login
+                    window.location.href = '/login.html';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                window.location.href = '/login.html';
+            }
+        })();
+    </script>
+
+    <style>
+        .loading-container {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .spinner {
+            margin: 30px auto;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .user-info {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .confidential {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</body>
+</html>
